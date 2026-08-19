@@ -42,9 +42,3 @@ python3 app.py --reset-demo
 - `GET /api/tickets`
 - `GET /api/tickets?status=Open&priority=High&query=Wi-Fi`
 
-## A few design choices
-
-- **SQLite:** enough structure to practise queries and metrics, without needing a cloud account.
-- **Search on the server:** filters are part of the API, so the browser does not have to download everything first.
-- **Fictional data:** it makes the project safe to share publicly while still looking at realistic support patterns.
-
