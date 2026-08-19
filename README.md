@@ -1,8 +1,8 @@
 # support
 
-Support queues can get overwhelming fast. I made this small dashboard to turn a pile of tickets into a clearer picture of what needs attention, what is overdue, and what keeps coming back.
+Support queues can get overwhelming fast. I made this small dashboard to turn a pile of tickets into a clearer picture of what needs attention, what is overdue and what keeps coming back.
 
-The tickets are fictional. I deliberately based them on familiar team, student, and retail-style tech issues instead of using any real customer or employee information.
+The tickets are fictional. Based on familiar team, student and retail-style tech issues instead of using any real customer or employee information.
 
 ## What it can do
 
@@ -48,8 +48,3 @@ python3 app.py --reset-demo
 - **Search on the server:** filters are part of the API, so the browser does not have to download everything first.
 - **Fictional data:** it makes the project safe to share publicly while still looking at realistic support patterns.
 
-## If you ask me about it in an interview
-
-I would start with the problem: it is easy to lose track of which support issues are urgent or repeating. Then I would explain how the ticket data is stored, how the Python API applies filters, and how the dashboard turns the results into a quick triage view.
-
-Before adding this to a résumé, I should be able to walk through the code and describe those choices in my own words.
