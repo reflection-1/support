@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>support — a tiny ticket dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">a small support + data project</p>
+          <h1>support</h1>
+          <p class="intro">a tiny dashboard for sorting what needs attention.</p>
+        </div>
+        <div class="header-actions">
+          <span class="status-dot">fictional data only</span>
+          <button id="newTicketButton" class="new-ticket-button" type="button">+ new dummy ticket</button>
+        </div>
+      </header>
+
+      <section class="project-note" aria-label="About this demo">
+        <div>
+          <p class="eyebrow">why this exists</p>
+          <h2>small tech problems can eat a whole day.</h2>
+          <p>built around familiar team, student, and retail-style support issues: access that suddenly stops working, data that looks a little off, and instructions nobody can find when they need them.</p>
+        </div>
+        <p class="note-aside"><b>built with</b> python, sqlite + javascript<br /><b>data</b> fictional, on purpose</p>
+      </section>
+
+      <section class="metric-grid" aria-label="Support metrics">
+        <article class="metric-card"><span>total tickets</span><strong id="totalMetric">-</strong></article>
+        <article class="metric-card"><span>still open</span><strong id="openMetric">-</strong></article>
+        <article class="metric-card"><span>overdue</span><strong id="overdueMetric">-</strong></article>
+        <article class="metric-card"><span>avg. resolution</span><strong id="resolutionMetric">-</strong></article>
+      </section>
+
+      <section class="insight-panel">
+        <div>
+          <p class="eyebrow">where the friction is</p>
+          <div id="categoryBreakdown" class="breakdown"></div>
+        </div>
+        <div>
+          <p class="eyebrow">ticket status</p>
+          <div id="statusBreakdown" class="breakdown"></div>
+        </div>
+      </section>
+
+      <section class="ticket-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">ticket queue</p>
+            <h2>what needs attention</h2>
+          </div>
+          <p id="ticketCount" class="count-label"></p>
+        </div>
+
+        <div class="filters" aria-label="Ticket filters">
+          <label>search <input id="queryFilter" type="search" placeholder="try wi-fi or access" /></label>
+          <label>status
+            <select id="statusFilter"><option value="">all statuses</option><option>Open</option><option>In Progress</option><option>Resolved</option></select>
+          </label>
+          <label>priority
+            <select id="priorityFilter"><option value="">all priorities</option><option>High</option><option>Medium</option><option>Low</option></select>
+          </label>
+        </div>
+
+        <p class="data-note">made-up sample data only — no customer or employee information here.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ticket</th><th>category</th><th>priority</th><th>status</th><th>owner</th><th>due</th></tr></thead>
+            <tbody id="ticketRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="ticketDialog" class="ticket-dialog">
+      <form id="ticketForm">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">new dummy ticket</p>
+            <h2>what broke?</h2>
+          </div>
+          <button id="closeDialogButton" class="icon-button" type="button" aria-label="close">×</button>
+        </div>
+
+        <p class="dialog-note">this stays in your local demo database.</p>
+
+        <label>ticket title
+          <input name="title" maxlength="100" required placeholder="e.g. the printer is being dramatic" />
+        </label>
+
+        <label>requester
+          <input name="requester" maxlength="60" required placeholder="e.g. pop-up shop" />
+        </label>
+
+        <div class="form-row">
+          <label>category
+            <select name="category" required>
+              <option value="">choose one</option><option>Access</option><option>Application</option><option>Data</option><option>Hardware</option><option>Knowledge</option><option>Network</option>
+            </select>
+          </label>
+          <label>priority
+            <select name="priority" required>
+              <option value="">choose one</option><option>High</option><option>Medium</option><option>Low</option>
+            </select>
+          </label>
+        </div>
+
+        <label>quick description
+          <textarea name="description" maxlength="400" required placeholder="what happened, and who is blocked?"></textarea>
+        </label>
+
+        <p id="formMessage" class="form-message" role="status"></p>
+        <div class="dialog-actions">
+          <button id="cancelTicketButton" class="quiet-button" type="button">never mind</button>
+          <button class="submit-button" type="submit">add ticket →</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
